@@ -61,7 +61,7 @@ const BoardList = ({tasks,...boards}) => {
                         sortedBoards.map(board => 
                             <div  
                                 key={board.id}
-                                style={{position:'relative',borderRadius: '10px',overflow:'hidden'}}
+                                style={{position:'relative',borderRadius: '10px'}}
                                 draggable={true}
                                 onDragStart={(e) => dragStartHandler(e,board)}
                                 onDragLeave={(e) => dragEndHandler(e)} 
