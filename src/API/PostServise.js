@@ -1,7 +1,7 @@
 import axios from "axios"
 
 
-export const url = 'http://localhost:5000/'
+export const url = 'https://todo-backend-2ezuwxji5-un22y.vercel.app/'
 const headers = {
     "Content-Type":"application/json",
     'Access-Control-Allow-Origin': '*',
