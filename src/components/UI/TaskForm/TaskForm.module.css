@@ -1,0 +1,16 @@
+.taskform_box {
+    display: flex;
+    gap:22px;
+    flex-direction: column;
+    padding: 20px 20px;
+}
+
+.taskform_description {
+    /* resize: none; */
+    text-overflow: clip;
+}
+
+.taskform_save {
+    border-radius: 10px;
+    overflow: hidden;
+}

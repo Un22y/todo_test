@@ -1,0 +1,30 @@
+@import "../../App.css";
+
+.preloader_box {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    height: 300vh;
+
+}
+
+.circle {
+    align-self: flex-start;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 10px dotted var(--taskboard-border-color);
+    animation: rotate infinite 3s ease-in-out;
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg) scale(.7);
+    }
+    50% {
+        transform: rotate(360deg);
+    }
+    100% {
+        transform:rotate(-360deg)
+    }
+}

@@ -1,0 +1,25 @@
+@import "./../../../App.css";
+
+.myModal_window {
+    display: none;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    padding: 40px 20px;
+    background-color: rgba(0, 0, 0, .2);
+    z-index: 100;
+}
+
+.active {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.myModal_content {
+    padding: 20px;
+    background-color: var(--modal-color);
+    border-radius: 10px;
+}

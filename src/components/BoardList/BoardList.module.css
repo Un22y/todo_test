@@ -1,0 +1,33 @@
+.boardlist {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 30px;
+}
+
+.search_box {
+    align-self: flex-start;
+}
+
+.boardlist_listbox {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(25%, 1fr));
+    grid-auto-flow: dense;
+    column-gap: 20px;
+    row-gap: 40px;
+    align-items: start;
+}
+
+@media (max-width:1229px){
+    .boardlist_listbox {
+        grid-template-columns: repeat(2, minmax(50%, 1fr));
+        row-gap: 40px;
+    }
+}
+
+@media (max-width:680px){
+    .boardlist_listbox {
+        grid-template-columns: repeat(1, minmax(50%, 1fr));
+        row-gap: 20px;
+    }
+}
