@@ -38,6 +38,9 @@ function App() {
       <div className='main_button'>
         <MyButton callback={()=> setShowAddMenu(true)}>Add task board</MyButton>
       </div>
+      <div className='main_button'>
+        <MyButton callback={()=> dispatch(fetchBoards())}>refresh</MyButton>
+      </div>
       <BoardList tasks={clientTasks} loading={clientBoards.loading} data={clientBoards.data} error={clientBoards.error}/>
     </div>
   )

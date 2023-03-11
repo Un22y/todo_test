@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import TaskBoard from "./../TaskBoard/TaskBoard"
 import { find } from "../../app/search/find";
 import MyInput from "../UI/MyInput/MyInput";
@@ -10,7 +10,7 @@ import { fetchBoards, updateBoard } from "../../features/boards/BoardsSlice";
 const BoardList = ({tasks,...boards}) => {
     const dispatch = useDispatch()
     const [sortedBoards,setSortedBoards] = useState(boards.data)
-    useEffect(() => setSortedBoards(boards.data),[boards.data])
+    useEffect(() => setSortedBoards(boards.data),[[...boards.data]])
 
 //================================SEARCH BOARD BY NAME=====================================//
     const [search,setSearch] = useState('')
@@ -33,15 +33,19 @@ const BoardList = ({tasks,...boards}) => {
         e.target.style.transform = 'scale(1)'
     }
 
-    function dragOverHandler(e,board) {
+    function dragOverHandler(e) {
         e.preventDefault();
+        if(e.target.className !== classes.drag_box) return
+        console.log('drag over ', e.target)
         e.target.style.transform = 'scale(1.05)'
     }
 
     function dropHandler(e,drop_board) {
         e.preventDefault();
-        const tmp = drop_board.order_id
+        if(e.target.className !== classes.drag_box) return
+        console.log('drop', drop_board)
         if (currentBoard.id === drop_board.id) return
+        const tmp = drop_board.order_id
         dispatch(updateBoard({...drop_board, order_id : currentBoard.order_id}))
         dispatch(updateBoard({...currentBoard, order_id : tmp}))
         dispatch(fetchBoards()) 
@@ -59,7 +63,8 @@ const BoardList = ({tasks,...boards}) => {
                 <div className={classes.boardlist_listbox}>
                     {
                         sortedBoards.map(board => 
-                            <div  
+                            <div 
+                                className={classes.drag_box} 
                                 key={board.id}
                                 style={{position:'relative',borderRadius: '10px'}}
                                 draggable={true}

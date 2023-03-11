@@ -11,7 +11,8 @@ const headers = {
 export default class PostServise {
     static async getAll(link) {
         const response = await axios.get(link)
-        return response.data
+        const data = response.data
+        return data
     }
     static async create(link,newitem) {
         try{

@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, { useState} from "react";
 import { useDispatch } from "react-redux";
 import { deleteTask, updateTask } from "../../features/tasks/TasksSlice";
 import MyButton from "../UI/MyButton/MyButton";

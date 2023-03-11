@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { deleteBoard, updateBoard } from "../../features/boards/BoardsSlice";
 import { find } from "../../app/search/find";
 import MyModal from "../UI/MyModal/MyModal";
@@ -52,6 +52,8 @@ const TaskBoard = ({tasks,board}) => {
 
     return (
             <div draggable={false} className={classes.tasklist_box}>
+
+
                 <MyModal visible={addTask} setVisible={setAddTask}>
                     <TaskForm board_name={board.name} board_id={board.id}/>
                 </MyModal>
@@ -61,21 +63,26 @@ const TaskBoard = ({tasks,board}) => {
                 >
                     <FullDescription data={fullTask}/>
                 </MyModal>
-                <div className={classes.board_options}>
+
+
+
+                <div draggable={false} className={classes.board_options}>
                     <MyButton callback={() => dispatch(deleteBoard(board.id))}>Удалить</MyButton>
                     <MyButton callback={() => switchRename()}>{rename ? 'Закрыть без сохранения' : 'Редактировать'}</MyButton>
                 </div>
                 {rename
-                ?
-                <div>
-                    <MyInput focus={rename} callback={(e) => setTitle(e.target.value)} type="text" value={title}/>
-                    <MyButton disabled={title === board.name} callback={() => save()}>Сохранить</MyButton>
-                </div>
-                :
-                <h2 className={classes.tasklist_title}>{title} {board.order_id}</h2>
+                    ?
+                    <div draggable={false}>
+                        <MyInput focus={rename} callback={(e) => setTitle(e.target.value)} type="text" value={title}/>
+                        <MyButton disabled={title === board.name} callback={() => save()}>Сохранить</MyButton>
+                    </div>
+                    :
+                    <h2 className={classes.tasklist_title}>{title} {board.order_id}</h2>
                 }
+                    
+                    
                 <MyInput value={search} callback={(e) => setSearch(e.target.value)} label='Поиск'/>
-                <div className={classes.tasklist_listbox}>
+                <div draggable={false} className={classes.tasklist_listbox}>
                     {
                         sortedTasks.map((task) => 
                             <Task
@@ -86,7 +93,9 @@ const TaskBoard = ({tasks,board}) => {
                             />)
                     }
                 </div>
-                <div className={classes.board_options}>
+
+
+                <div draggable={false} className={classes.board_options}>
                     <MyButton callback={() => setAddTask(true)}>Добавить задачу в список</MyButton>
                 </div>
             </div>
